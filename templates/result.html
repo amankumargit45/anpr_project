@@ -1,0 +1,14 @@
+<h2>🚨 Stolen Vehicles Detected</h2>
+
+{% if plates %} {% for plate in plates %}
+<p>{{ plate }}</p>
+{% endfor %} {% else %}
+<p>No stolen vehicles detected ✅</p>
+{% endif %}
+
+<hr />
+
+<h3>All Detected Plates:</h3>
+{% for plate in all_detected %}
+<p>{{ plate }}</p>
+{% endfor %}
