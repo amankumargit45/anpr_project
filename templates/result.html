@@ -1,9 +1,9 @@
 <h2>🚨 Stolen Vehicles Detected</h2>
 
 {% if plates %} {% for plate in plates %}
-<p>{{ plate }}</p>
+<p style="color: red; font-size: 20px;">{{ plate }}</p>
 {% endfor %} {% else %}
-<p>No stolen vehicles detected ✅</p>
+<p style="color: green">No stolen vehicles detected ✅</p>
 {% endif %}
 
 <hr />
