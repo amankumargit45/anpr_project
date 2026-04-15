@@ -50,6 +50,13 @@ def process_video(video_path):
             break
 
         frame_count += 1
+        
+        # Process every 30 frames
+        if frame_count % 30 != 0:
+            continue
+
+        frame = cv2.resize(frame, (640, 480))
+
 
         
 
@@ -74,7 +81,7 @@ def process_video(video_path):
                         ocr_results = reader.readtext(plate_img)
 
                         for (_, text, prob) in ocr_results:
-                            if prob > 0.5:
+                            if prob > 0.6:
                                 clean_text = text.replace(" ", "").upper()
                                 detected_plates.add(clean_text)
 
@@ -150,7 +157,11 @@ def upload_video():
     # Send result
     # -------------------------------
    
-
+    return render_template(
+        'result.html',
+        plates=list(matched),
+        all_detected=list(plates)
+    )
 
 @app.route('/video')
 def video():
